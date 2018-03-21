@@ -526,7 +526,7 @@ public class DynmapPlugin
         public boolean isPlayerBanned(String pid)
         {
             UserListBans bl = server.getPlayerList().getBannedPlayers();
-            return bl.isBanned(new GameProfile(null, pid));
+            return bl.getBannedProfile(pid)!=null;
         }
         
         @Override
@@ -690,9 +690,9 @@ public class DynmapPlugin
             if (scm == null) return Collections.emptySet();
             UserListBans bl = scm.getBannedPlayers();
             if (bl == null) return Collections.emptySet();
-            if(bl.isBanned(new GameProfile(null, player))) {
-                return Collections.emptySet();
-            }
+            //if(bl.isBanned(new GameProfile(null, player))) {
+            //    return Collections.emptySet();
+            //}
             Set<String> rslt = hasOfflinePermissions(player, perms);
             if (rslt == null) {
                 rslt = new HashSet<String>();
@@ -709,9 +709,9 @@ public class DynmapPlugin
             if (scm == null) return false;
             UserListBans bl = scm.getBannedPlayers();
             if (bl == null) return false;
-            if(bl.isBanned(new GameProfile(null, player))) {
-                return false;
-            }
+            //if(bl.isBanned(new GameProfile(null, player))) {
+            //    return false;
+            //}
             return hasOfflinePermission(player, perm);
         }
         /**
